@@ -275,7 +275,7 @@ void PixelBufferX11::init()
                     attributes.push_back( GL_TRUE );
                     attributes.push_back( 0L );
 
-                    _pbuffer = glXCreatePbuffer(_display, fbconfigs[i], &attributes.front() );
+                    _pbuffer = (void*)glXCreatePbuffer(_display, fbconfigs[i], &attributes.front() );
                     _useGLX1_3 = true;
                 }
             }
@@ -284,8 +284,8 @@ void PixelBufferX11::init()
         {
             int iWidth = 0;
             int iHeight = 0;
-            glXQueryDrawable(_display, _pbuffer, GLX_WIDTH  , (unsigned int *)&iWidth);
-            glXQueryDrawable(_display, _pbuffer, GLX_HEIGHT , (unsigned int *)&iHeight);
+            glXQueryDrawable(_display, (long unsigned int)_pbuffer, GLX_WIDTH  , (unsigned int *)&iWidth);
+            glXQueryDrawable(_display, (long unsigned int)_pbuffer, GLX_HEIGHT , (unsigned int *)&iHeight);
 
             if (_traits->width != iWidth || _traits->height != iHeight)
             {
@@ -359,15 +359,15 @@ void PixelBufferX11::closeImplementation()
     {
         if (_context)
         {
-            glXDestroyContext(_display, _context );
+            glXDestroyContext(_display, (GLXContext)_context );
         }
 
         if (_pbuffer)
         {
             if (_useGLX1_3)
             {
-#ifdef GLX_VERSION_1_3
-                glXDestroyPbuffer(_display, _pbuffer);
+#ifdef GLX_VERSION_1_3m
+                glXDestroyPbuffer(_display, (long unsigned int)_pbuffer);
 #endif
             }
             else

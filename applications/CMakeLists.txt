@@ -23,7 +23,8 @@ SET(TARGET_COMMON_LIBRARIES
 	osgUtil
 	osgGA
 	osgViewer 
-	osgText 
+	osgText
+    EGL
 )
 
 IF(DYNAMIC_OPENSCENEGRAPH)

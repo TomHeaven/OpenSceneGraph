@@ -240,7 +240,7 @@ void PixelBufferX11::init()
     GraphicsHandleX11* graphicsHandleX11 = dynamic_cast<GraphicsHandleX11*>(_traits->sharedContext.get());
     Context sharedContext = graphicsHandleX11 ? graphicsHandleX11->getContext() : 0;
 
-    _context = glXCreateContext( _display, _visualInfo, sharedContext, True );
+    _context = glXCreateContext( (Display*)_display, _visualInfo, (GLXContext) sharedContext, True );
 
     if (!_context)
     {

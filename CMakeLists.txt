@@ -5,7 +5,8 @@ SET(OPENSCENEGRAPH_MAJOR_VERSION 3)
 SET(OPENSCENEGRAPH_MINOR_VERSION 7)
 SET(OPENSCENEGRAPH_PATCH_VERSION 0)
 SET(OPENSCENEGRAPH_SOVERSION 202)
-
+SET(GCC_COVERAGE_COMPILE_FLAGS "-fpermissive")
+SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 
 # set to 0 when not a release candidate, non zero means that any generated
 # git tags will be treated as release candidates of given number
@@ -300,6 +301,8 @@ ELSE()
     ELSE()
         # Non-Apple: Find OpenGL
         FIND_PACKAGE(OpenGL)
+        FIND_PACKAGE(EGL)
+        set(OSG_USE_EGL ON)
     ENDIF()
 
 ENDIF()

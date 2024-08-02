@@ -267,6 +267,7 @@ SET(TARGET_LIBRARIES
     osgUtil
     osg
     OpenThreads
+    EGL
 )
 
 SET(TARGET_EXTERNAL_LIBRARIES ${LIB_EXTRA_LIBS})

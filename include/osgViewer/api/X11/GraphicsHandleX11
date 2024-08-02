@@ -34,6 +34,10 @@
     #endif
 #endif
 
+// Tom added
+#include <EGL/egl.h>
+#define OSG_USE_EGL
+
 namespace osgViewer
 {
 

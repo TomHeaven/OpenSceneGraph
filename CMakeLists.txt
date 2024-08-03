@@ -7,7 +7,7 @@ SET(OPENSCENEGRAPH_PATCH_VERSION 0)
 SET(OPENSCENEGRAPH_SOVERSION 202)
 # SET(GCC_COVERAGE_COMPILE_FLAGS "-fpermissive")
 # SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
-set(OSG_GLES2_AVAILABLE ON)
+# set(OSG_GLES2_AVAILABLE ON)
 
 # set to 0 when not a release candidate, non zero means that any generated
 # git tags will be treated as release candidates of given number
@@ -303,12 +303,12 @@ ELSE()
         # Non-Apple: Find OpenGL
         FIND_PACKAGE(OpenGL)
         FIND_PACKAGE(EGL)
-        set(OSG_USE_EGL ON)
+        # set(OSG_USE_EGL ON)
 
-        IF(OSG_GLES2_AVAILABLE)
-            FIND_PATH(OPENGL_INCLUDE_DIR GLES2/gl2.h)
-        ENDIF()
-        FIND_LIBRARY(OPENGL_gl_LIBRARY "libGLES.so")
+        # IF(OSG_GLES2_AVAILABLE)
+            # FIND_PATH(OPENGL_INCLUDE_DIR GLES2/gl2.h)
+        # ENDIF()
+        # FIND_LIBRARY(OPENGL_gl_LIBRARY "libGLES.so")
     ENDIF()
 
 ENDIF()
